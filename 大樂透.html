@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        div.a{text-align: center;}
+
+    </style>
+    <title>大樂透產生器</title>
+</head>
+<body>
+    <div class="a">  
+    <p>大樂透號碼產生器： </p>
+<p><label for="ballnum">號碼一</label></p>
+<input type="text" id="ballnum01" name="ballnum01"><br>
+<p><label for="ballnum">號碼二</label></p>
+<input type="text" id="ballnum02" name="ballnum02"><br>
+<p><label for="ballnum">號碼三</label></p>
+<input type="text" id="ballnum03" name="ballnum03"><br>
+<p><label for="ballnum">號碼四</label></p>
+<input type="text" id="ballnum04" name="ballnum04"><br>
+<p><label for="ballnum">號碼五</label></p>
+<input type="text" id="ballnum05" name="ballnum05"><br>
+<p><label for="ballnum">號碼六</label></p>
+<input type="text" id="ballnum06" name="ballnum06"><br>
+<p><label for="ballnum">特別號</label></p>
+<input type="number" id="ballnum07" name="ballnum07"><br>
+<input type="submit" name="NumberRender" id="NumberRender" value="產生號碼" onclick="NumRender()"/></td>
+</div>  
+
+
+<script type="text/javascript">
+        
+    　var NumberNameArray = Array ( "ballnum01", "ballnum02", "ballnum03", "ballnum04", "ballnum05", "ballnum06", "ballnum07" );
+    　
+    　var NumberArray = Array ( 0,0,0,0,0,0,0 );
+    　//宣告產生之號碼暫存陣列
+    
+    　function NumRender() { //產生號碼，有重複檢查
+    
+    　　for (i=1;i<=7;i=i+1) {
+    　　　for (j=1;j<=i;j=j+1){ //依序產生號碼，並依序檢查已產生並暫存於陣列內之號碼
+    　　　　　Num = Math.floor(Math.random()*49 + 1);
+    　　　　　if ( NumberArray[j-1] == Num ) {
+    　　　　　　j=1;
+    　　　　　}
+    　　　}
+    　　　NumberArray[i-1] = Num;
+    　　}
+    　　setNumber();
+    　}
+    
+    　function setNumber() { //將產生之號碼依序設為表單input值
+    　　for (i=1;i<=7;i=i+1) {
+    　　　document.getElementById(NumberNameArray[i-1]).value = NumberArray[i-1];
+    　　}
+    　}
+    
+    </script>
+</body>
+</html>
